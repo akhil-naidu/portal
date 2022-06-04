@@ -1,3 +1,9 @@
+# Hasura
+
+There exists a docker-compose.yml in the root of the repository, which will allow us to run Hasura locally.
+
+Apart from this, there is a folder named `hasura` which allows us to work with github integrations.
+
 # Things I have done while configuring this project
 
 1. Used yarn set version stable
