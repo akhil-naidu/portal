@@ -4,6 +4,14 @@ There exists a docker-compose.yml in the root of the repository, which will allo
 
 Apart from this, there is a folder named `hasura` which allows us to work with github integrations.
 
+### Installing Hasura CLI
+
+```
+curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
+```
+
+After installing the Hasura CLI, use the following [documentation](https://hasura.io/docs/latest/graphql/core/hasura-cli/hasura_completion/) to set up the auto-completion.
+
 # Things I have done while configuring this project
 
 1. Used yarn set version stable
