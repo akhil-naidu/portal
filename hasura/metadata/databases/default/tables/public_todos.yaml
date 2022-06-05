@@ -12,3 +12,14 @@ insert_permissions:
       columns:
         - title
       backend_only: false
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - completed
+        - created_at
+        - id
+        - title
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
