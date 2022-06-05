@@ -23,3 +23,13 @@ select_permissions:
       filter:
         user_id:
           _eq: X-Hasura-User-Id
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - completed
+        - title
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check: null
