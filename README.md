@@ -15,7 +15,7 @@
 
 This project will be hosted on vercel, but the folder `hasura` has nothing to with the frontend. So, I created a `.vercelignore` file to not upload any content of it.
 
-Also, I would not like to trigger a vercel build, if only the files in `hasura` folder were updated. For that reason, I added a special check in vercel project settings to ignore build based on `hasura` folder. Using the command `git diff HEAD^ HEAD --quiet ./hasura`
+Also, I would not like to trigger a vercel build, if only the files in `hasura` folder were updated. For that reason, I added a special check in vercel project settings to ignore build based on `hasura` folder. Using the command `git diff master^ master --quiet ./hasura`
 
 # Hasura
 
