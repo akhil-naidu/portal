@@ -1,6 +1,9 @@
+# documentation for this config can be found at https://hasura.io/docs/latest/graphql/core/hasura-cli/config-reference.html
+
 version: 3
 endpoint: http://localhost:8080
 metadata_directory: metadata
+admin_secret: ravanasura
 actions:
   kind: synchronous
   handler_webhook_baseurl: http://localhost:3000

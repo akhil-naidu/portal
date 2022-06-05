@@ -19,16 +19,21 @@ Also, I would not like to trigger a vercel build, if only the files in `hasura` 
 
 # Hasura
 
-There exists a docker-compose.yml in the root of the repository, which will allow us to run Hasura locally.
+> Anything related to Hasura should be done in the `hasura` folder.
 
-Apart from this, there is a folder named `hasura` which allows us to work with github integrations.
+```
+cd hasura
+```
+
+There exists a `docker-compose.yml` in the `hasura` folder of the repository, which will allow us to run Hasura locally.
+
+Apart from this, there is a folder named `hasura` which allows us to work with GitHub integrations.
 
 ## Installing Hasura CLI (Not Mandatory)
 
-This project comes with a `hasura-cli`
-as dev dependency, i.e., in order to use `hasura-cli` you can always use `npx hasura` within the `hasura` folder.
+This project comes with a `hasura-cli` as a dev dependency, i.e., to use `hasura-cli` you can always use `npx hasura` within the `hasura` folder.
 
-If you are interested in installing hasura-cli globally, follow the below instructions.
+If you are interested in installing `hasura-cli` globally, follow the below instructions.
 
 ```
 curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
@@ -38,9 +43,15 @@ After installing the Hasura CLI, use the following [documentation](https://hasur
 
 ## Using Hasura CLI
 
-Before using the Hasura CLI, you need to first turn on the local hasura instance.
+Before using the Hasura CLI, you need to first turn on the local Hasura instance.
 
 ### Turning on the Hasura instance
+
+Anything related to Hasura should be done in the `hasura` folder.
+
+```
+cd hasura
+```
 
 In your root directory, use the below command to start the Hasura instance
 
@@ -54,17 +65,17 @@ Similarly to turn off the Hasura instance
 docker compose down
 ```
 
-This will trigger a Hasura instance on port 8080, but I made sure the console was disable for better team based development experience.
+This will trigger a Hasura instance on port 8080, but I made sure the console is disabled by default for a better team-based development experience.
 
-### Accessing the Hasura Console on web
+### Accessing the Hasura Console on the web
 
-As mentioned above, turing on the Hasura instance using `docker compose up -d` in the root directory will start the Hasura instance on port 8080, but will not allow you to access the console from the browser.
+As mentioned above, turning on the Hasura instance using the command `docker compose up -d` in the `hasura` directory will start the Hasura instance on port 8080, but will not allow you to access the console from the browser.
 
-In order for you to access the console on web and simultaneously track the state of the Hasura instance within our `hasura` folder.
+For you to access the console on the web and simultaneously track the state of the Hasura instance within our `hasura` folder.
 
 > This way whatever changes you have done can be uploaded to git and can be replicated with other developers.
 
-Use the following command in the `hasura` folder to spin up a Hasura console that can be accessed via web and simultaneously track the `metadata`(changed made in Hasura Console UI) and `migrations`(Changes made in our Database)
+Use the following command in the `hasura` folder to spin up a Hasura console that can be accessed via the web and simultaneously track the `metadata`(changes made in Hasura Console UI) and `migrations`(Changes made in our Database)
 
 ```
 cd hasura
@@ -75,7 +86,7 @@ npx hasura console
 
 ## Manually migrating and Applying metadata changes
 
-In order to use the `hasura-cli` you should be in the `hasura` folder.
+As mentioned multiple times, to use the `hasura-cli` you should be in the `hasura` folder.
 
 ```
 cd hasura
@@ -87,7 +98,7 @@ To apply the metadata changes
 npx hasura metadata apply
 ```
 
-In order to check if the migrations were applied properly
+Also, to check if the migrations were applied properly
 
 ```
 npx hasura migrate status
@@ -115,7 +126,7 @@ npx hasura metadata reload
 
 > Most probable you will never come across this issue in this particular repository, but in case fist contact someone who is aware of migrations and try to under stand before proceeding further.
 
-Sometimes you might have an old migration table, i.e., you have a table name `todos` already in your database and the hasura migration is trying to create it again which might result in some execution errors.
+Sometimes you might have an old migration table, i.e., you have a table name `todos` already in your database and the Hasura migration is trying to create it again which might result in some execution errors.
 
 To avoid this, we can manually tell the migration to ignore if there was an error while applying the migration.
 
@@ -137,7 +148,9 @@ So we need to first create a remote named `portal-hasura` for having a better de
 git remote add -f portal-hasura https://github.com/akhil-naidu/portal-hasura
 ```
 
-Once you have the remote within your git, you need to push the changes made in this repository, especially within the `hasura` folder to it's master repository to trigger a `hasura` build
+Once you have the remote within your git, you need to push the changes made in this repository, especially within the `hasura` folder to its master repository to trigger a `hasura` build
+
+> This following command can be executed directly in the root of your repository
 
 ```
 git subtree push --prefix hasura portal-hasura master
@@ -151,8 +164,12 @@ There might be some random occasion when you are supposed to get the updates fro
 
 To get the latest version of `portal-hasura` as subtree
 
+Once again, you need to be in the `hasura` directory/folder before you run any commands related to Hasura.
+
 ```
 cd hasura
+```
 
+```
 git subtree pull --prefix hasura portal-hasura master --squash
 ```
