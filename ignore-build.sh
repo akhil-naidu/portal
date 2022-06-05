@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [$(git diff HEAD^ HEAD ./hasura)] ; then
+if $(git diff HEAD^ HEAD hasura) ; then
   # Don't build
   echo "🛑 - Build cancelled"
   exit 0;
