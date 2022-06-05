@@ -1,3 +1,14 @@
 table:
   schema: public
   name: todos
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      set:
+        user_id: x-hasura-User-Id
+      columns:
+        - title
+      backend_only: false
