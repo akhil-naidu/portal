@@ -1,5 +1,5 @@
 #!/bin/bash
-var=$(git diff HEAD^ HEAD --quiet ./hasura)
+var=$(git diff HEAD^ HEAD ./hasura)
 
 
 if [[ var ]] ; then
