@@ -10,8 +10,8 @@ services:
   graphql-engine:
     image: hasura/graphql-engine:v2.7.0.cli-migrations-v3
     volumes:
-      - ./hasura/migrations:/hasura-migrations
-      - ./hasura/metadata:/hasura-metadata
+      - ./migrations:/hasura-migrations
+      - ./metadata:/hasura-metadata
     ports:
       - '8080:8080'
     depends_on:
