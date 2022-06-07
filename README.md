@@ -6,6 +6,13 @@
 4. Mantine UI for Frontend UI
 5. Hasura GraphQL as the Backend
 
+# Gitpod Setup
+
+1. Open your branch using `gitpod` => https://gitpod.io/#{your-branch-url-with-out-curly-braces} or click this [link](https://gitpod.io/#https://github.com/akhil-naidu/portal) to open gitpod on the master branch
+2. Now open `gitpod` using desktop vscode from the settings tab or via the helper command
+3. Within your desktop vscode expose the following ports, `3000`, `8080`, `9693`, `9695`
+4. now run turn on your hasura console using the command `npx hasura console`
+
 # Yarn
 
 1. Used yarn set version stable
