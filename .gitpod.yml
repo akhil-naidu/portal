@@ -14,6 +14,8 @@ ports:
     visibility: public
   - port: 8080
     visibility: public
+  - port: 9693
+    visibility: public
   - port: 9695
     onOpen: open-browser
     visibility: public
