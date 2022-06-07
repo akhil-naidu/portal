@@ -1,0 +1,20 @@
+tasks:
+  - name: NextJS Frontend
+    init: yarn install && yarn run build
+    command: yarn run start
+  - name: Hasura Backend
+    before: cd hasura
+    init: docker-compose up -d
+ports:
+  - port: 3000
+    onOpen: open-preview
+    visibility: public
+  - port: 5432
+    visibility: public
+  - port: 8080
+    visibility: public
+  - port: 9693
+    visibility: public
+  - port: 9695
+    visibility: public
+    onOpen: open-browser
