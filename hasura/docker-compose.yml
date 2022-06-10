@@ -9,6 +9,7 @@ services:
       POSTGRES_PASSWORD: postgrespassword
   graphql-engine:
     image: hasura/graphql-engine:v2.7.0.cli-migrations-v3
+    # image: hasuraci/graphql-engine-pro:v2.7.0-pro.2.cli-migrations-v3
     volumes:
       - ./migrations:/hasura-migrations
       - ./metadata:/hasura-metadata
@@ -29,6 +30,8 @@ services:
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       ## uncomment next line to set an admin secret
       HASURA_GRAPHQL_ADMIN_SECRET: ravanasura
-      HASURA_GRAPHQL_PRO_KEY: eyJwcm9qZWN0X2lkIjoiMDIxODk1MTMtNWM3OC00ZjU0LTkwZGMtZGYyOTA1ZTA2M2QwIiwiY29uc29sZV9pZCI6IjAyMTg5NTEzLTVjNzgtNGY1NC05MGRjLWRmMjkwNWUwNjNkMF9jb25zb2xlIiwic2VydmVyX2lkIjoiMDIxODk1MTMtNWM3OC00ZjU0LTkwZGMtZGYyOTA1ZTA2M2QwX3NlcnZlciIsInNlcnZlcl9zZWNyZXQiOiJ6ZWpxMFpnNDdWQ09Ic1p5TEhxejdLM3hkZ0V2blRUbHI2elFNNGNFS09PamJUSnR4OWJiY21sNFpzOWR5QXBTIn0=
+      ## This key has to be in the .env file, for key contact Akhil
+      HASURA_GRAPHQL_PRO_KEY: ${HASURA_GRAPHQL_PRO_KEY}
+
 volumes:
   db_data:
