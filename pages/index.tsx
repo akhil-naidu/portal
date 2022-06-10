@@ -10,7 +10,12 @@ import {
   MediaQuery,
   Burger,
   useMantineTheme,
+  Input,
+  TextInput,
+  Group,
+  Button,
 } from '@mantine/core';
+import { Search, Settings, Notification, Messages } from 'tabler-icons-react';
 
 const Home: NextPage = () => {
   const theme = useMantineTheme();
@@ -53,8 +58,13 @@ const Home: NextPage = () => {
       }
       header={
         <Header height={70} p='md'>
-          <div
-            style={{ display: 'flex', alignItems: 'center', height: '100%' }}
+          <Group
+            position='apart'
+            // style={{
+            //   // display: 'flex',
+            //   // alignItems: 'center',
+            //   height: '100%',
+            // }}
           >
             <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
               <Burger
@@ -65,9 +75,20 @@ const Home: NextPage = () => {
                 mr='xl'
               />
             </MediaQuery>
-
+            {/* <Group position='right'> */}
             <Text>Application header</Text>
-          </div>
+            <Input variant='filled' size='sm' icon={<Search />} />
+            <Group position='right' spacing='xs'>
+              <Settings size={20} strokeWidth={1} />
+              <Notification size={20} strokeWidth={1} />
+              <Messages size={20} strokeWidth={1} />
+              <img
+                src='https://global-uploads.webflow.com/5dc6336c6ade633733ef6e44/61b223b3016df958c1fc033b_screenshot-header-avatar.png'
+                alt='profile'
+              ></img>
+            </Group>
+          </Group>
+          {/* </Group> */}
         </Header>
       }
     >
