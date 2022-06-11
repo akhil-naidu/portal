@@ -2696,6 +2696,7 @@ __metadata:
     next: 12.1.6
     react: 18.1.0
     react-dom: 18.1.0
+    tabler-icons-react: ^1.48.1
     typescript: 4.7.2
   languageName: unknown
   linkType: soft
@@ -3251,6 +3252,15 @@ __metadata:
   version: 1.0.0
   resolution: "supports-preserve-symlinks-flag@npm:1.0.0"
   checksum: 53b1e247e68e05db7b3808b99b892bd36fb096e6fba213a06da7fab22045e97597db425c724f2bbd6c99a3c295e1e73f3e4de78592289f38431049e1277ca0ae
+  languageName: node
+  linkType: hard
+
+"tabler-icons-react@npm:^1.48.1":
+  version: 1.48.1
+  resolution: "tabler-icons-react@npm:1.48.1"
+  peerDependencies:
+    react: ">= 16.8.0"
+  checksum: 2d92fd25f3bae4acb9c440c3582af64b597c0d8c9f6aa30af80532dc28c32b80ff08c60c2611b0bb47a65e64f480874989173a48d91e3a54ecef6d151ae841bd
   languageName: node
   linkType: hard
 

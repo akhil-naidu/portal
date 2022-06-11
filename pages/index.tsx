@@ -12,6 +12,8 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 
+import HeaderFromShared from '@/components/shared/Header';
+
 const Home: NextPage = () => {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
@@ -54,7 +56,11 @@ const Home: NextPage = () => {
       header={
         <Header height={70} p='md'>
           <div
-            style={{ display: 'flex', alignItems: 'center', height: '100%' }}
+          // style={{
+          //   display: 'flex',
+          //   alignItems: 'center',
+          //   height: '100%',
+          // }}
           >
             <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
               <Burger
@@ -65,8 +71,7 @@ const Home: NextPage = () => {
                 mr='xl'
               />
             </MediaQuery>
-
-            <Text>Application header</Text>
+            <HeaderFromShared />
           </div>
         </Header>
       }
