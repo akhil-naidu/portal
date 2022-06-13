@@ -7,6 +7,7 @@ import {
   Avatar,
   MediaQuery,
   Burger,
+  Text,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { Notification, Messages, Settings, Search } from 'tabler-icons-react';
@@ -18,11 +19,11 @@ interface Props {
 }
 
 const Header = ({ theme, opened, setOpened }: Props) => {
-  const removeSearch = useMediaQuery('(min-width: 700px)');
+  const removeSearch = useMediaQuery('(min-width: 600px)');
 
   return (
-    <Grid align='center' columns={18}>
-      <Grid.Col span={4}>
+    <Grid columns={18}>
+      <Grid.Col span={removeSearch ? 4 : 8}>
         <Group>
           <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
             <Burger
@@ -33,7 +34,7 @@ const Header = ({ theme, opened, setOpened }: Props) => {
               mr='xs'
             />
           </MediaQuery>
-          <p>P</p>
+          <Text>P</Text>
         </Group>
       </Grid.Col>
       {removeSearch && (
@@ -41,7 +42,7 @@ const Header = ({ theme, opened, setOpened }: Props) => {
           <Input variant='filled' size='xs' icon={<Search />} />
         </Grid.Col>
       )}
-      <Grid.Col span={removeSearch ? 6 : 14}>
+      <Grid.Col span={removeSearch ? 6 : 10}>
         <Group position='right' spacing='xs'>
           <ActionIcon onClick={() => console.log('clicked')}>
             <Settings size={20} strokeWidth={1} />
