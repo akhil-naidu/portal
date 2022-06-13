@@ -12,13 +12,12 @@ import {
 import { useMediaQuery } from '@mantine/hooks';
 import { Notification, Messages, Settings, Search } from 'tabler-icons-react';
 
-interface Props {
-  theme: any;
-  opened: boolean;
-  setOpened: Dispatch<SetStateAction<boolean>>;
-}
+import { useDashboardStore } from '@/utils/store/useDashboardStore';
 
-const Header = ({ theme, opened, setOpened }: Props) => {
+const Header = ({ theme }: any) => {
+  const isBurger = useDashboardStore((state) => state.isBurger);
+  const toggleBurger = useDashboardStore((state) => state.toggleBurger);
+
   const removeSearch = useMediaQuery('(min-width: 700px)', false);
 
   return (
@@ -27,14 +26,16 @@ const Header = ({ theme, opened, setOpened }: Props) => {
         <Group>
           <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
             <Burger
-              opened={opened}
-              onClick={() => setOpened((o: boolean) => !o)}
+              opened={isBurger}
+              onClick={() => toggleBurger()}
               size='sm'
               color={theme.colors.gray[6]}
               mr='xs'
             />
           </MediaQuery>
-          <Text>P</Text>
+          <Text size='xl' color='blue' weight={700}>
+            Portal
+          </Text>
         </Group>
       </Grid.Col>
       {removeSearch && (

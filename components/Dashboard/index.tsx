@@ -1,21 +1,23 @@
-import { useState } from 'react';
 import {
   AppShell,
   Navbar,
   Header,
   Footer,
-  Aside,
-  Text,
-  MediaQuery,
   useMantineTheme,
 } from '@mantine/core';
 
-import HeaderFromShared from '@/components/shared/Header';
-import NavbarFromShared from '@/components/shared/Navbar';
+import { useDashboardStore } from '@/utils/store/useDashboardStore';
+import {
+  DashboardHeader,
+  DashboardNavbar,
+  DashboardFooter,
+  DashboardSidebar,
+  DashboardFeed,
+} from '@/components/shared';
 
 const Dashboard = () => {
   const theme = useMantineTheme();
-  const [opened, setOpened] = useState(false);
+  const isBurger = useDashboardStore((state) => state.isBurger);
 
   return (
     <AppShell
@@ -34,35 +36,25 @@ const Dashboard = () => {
         <Navbar
           p='md'
           hiddenBreakpoint='sm'
-          hidden={!opened}
+          hidden={!isBurger}
           width={{ sm: 200, lg: 300 }}
         >
-          <NavbarFromShared />
+          <DashboardNavbar />
         </Navbar>
       }
-      aside={
-        <MediaQuery smallerThan='md' styles={{ display: 'none' }}>
-          <Aside p='md' hiddenBreakpoint='md' width={{ sm: 200, lg: 300 }}>
-            <Text>Application sidebar</Text>
-          </Aside>
-        </MediaQuery>
-      }
+      aside={<DashboardSidebar />}
       footer={
         <Footer height={60} p='md'>
-          Application footer
+          <DashboardFooter />
         </Footer>
       }
       header={
         <Header height={70} p='md'>
-          <HeaderFromShared
-            theme={theme}
-            opened={opened}
-            setOpened={setOpened}
-          />
+          <DashboardHeader theme={theme} />
         </Header>
       }
     >
-      <Text>Resize app to see responsive navbar in action</Text>
+      <DashboardFeed />
     </AppShell>
   );
 };
