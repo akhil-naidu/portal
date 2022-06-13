@@ -19,11 +19,11 @@ interface Props {
 }
 
 const Header = ({ theme, opened, setOpened }: Props) => {
-  const removeSearch = useMediaQuery('(min-width: 600px)');
+  const removeSearch = useMediaQuery('(min-width: 700px)', false);
 
   return (
     <Grid columns={18}>
-      <Grid.Col span={removeSearch ? 4 : 8}>
+      <Grid.Col span={removeSearch ? 6 : 8}>
         <Group>
           <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
             <Burger
@@ -38,7 +38,7 @@ const Header = ({ theme, opened, setOpened }: Props) => {
         </Group>
       </Grid.Col>
       {removeSearch && (
-        <Grid.Col span={8}>
+        <Grid.Col span={6}>
           <Input variant='filled' size='xs' icon={<Search />} />
         </Grid.Col>
       )}
