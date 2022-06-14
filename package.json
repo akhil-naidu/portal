@@ -2,6 +2,11 @@
   "name": "portal",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=14.0.0",
+    "yarn": ">=3.2.1",
+    "npm": "please use yarn instead"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
