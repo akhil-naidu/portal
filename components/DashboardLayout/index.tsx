@@ -12,10 +12,14 @@ import {
   DashboardNavbar,
   DashboardFooter,
   DashboardSidebar,
-  DashboardFeed,
 } from '@/components/shared';
 
-const Dashboard = () => {
+interface DashboardProps {
+  enableSidebar: boolean;
+  children: any;
+}
+
+const DashboardLayout = ({ enableSidebar, children }: DashboardProps) => {
   const theme = useMantineTheme();
   const isBurger = useDashboardStore((state) => state.isBurger);
 
@@ -42,7 +46,7 @@ const Dashboard = () => {
           <DashboardNavbar />
         </Navbar>
       }
-      aside={<DashboardSidebar />}
+      aside={enableSidebar ? <DashboardSidebar /> : <></>}
       footer={
         <Footer height={60} p='md'>
           <DashboardFooter />
@@ -54,9 +58,9 @@ const Dashboard = () => {
         </Header>
       }
     >
-      <DashboardFeed />
+      {children}
     </AppShell>
   );
 };
 
-export default Dashboard;
+export default DashboardLayout;

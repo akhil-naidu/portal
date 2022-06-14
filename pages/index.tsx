@@ -1,9 +1,14 @@
 import type { NextPage } from 'next';
 
-import Dashboard from '@/components/Dashboard';
+import DashboardLayout from '@/components/DashboardLayout';
+import { DashboardFeed } from '@/components/shared';
 
 const Home: NextPage = () => {
-  return <Dashboard />;
+  return (
+    <DashboardLayout enableSidebar={true}>
+      <DashboardFeed />
+    </DashboardLayout>
+  );
 };
 
 export default Home;
