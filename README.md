@@ -194,3 +194,9 @@ Before pushing the code, making sure I have a working production build
 ```
 npx husky add .husky/pre-push "yarn build"
 ```
+
+Linting the commit message
+
+```
+npx husky add .husky/commit-message 'npx --no --commitlint --edit "$1"'
+```
