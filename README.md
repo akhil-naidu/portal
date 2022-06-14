@@ -198,5 +198,5 @@ npx husky add .husky/pre-push "yarn build"
 Linting the commit message
 
 ```
-npx husky add .husky/commit-message 'npx --no --commitlint --edit "$1"'
+npx husky add .husky/commit-msg 'npx commitlint --edit $1'
 ```
