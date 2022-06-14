@@ -1,18 +1,13 @@
-import {
-  AppShell,
-  Navbar,
-  Header,
-  Footer,
-  useMantineTheme,
-} from '@mantine/core';
+import { AppShell, Footer, Header, Navbar, useMantineTheme } from '@mantine/core';
 
-import { useDashboardStore } from '@/utils/store/useDashboardStore';
 import {
+  DashboardFooter,
   DashboardHeader,
   DashboardNavbar,
-  DashboardFooter,
   DashboardSidebar,
 } from '@/components/shared';
+
+import { useDashboardStore } from '@/utils/store/useDashboardStore';
 
 interface DashboardProps {
   enableSidebar: boolean;
@@ -28,9 +23,7 @@ const DashboardLayout = ({ enableSidebar, children }: DashboardProps) => {
       styles={{
         main: {
           background:
-            theme.colorScheme === 'dark'
-              ? theme.colors.dark[8]
-              : theme.colors.gray[0],
+            theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
         },
       }}
       navbarOffsetBreakpoint='sm'

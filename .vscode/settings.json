@@ -1,3 +1,9 @@
 {
-  "cSpell.words": ["commitlint", "dropzone", "mantine", "tabler"]
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "cSpell.words": ["commitlint", "dropzone", "mantine", "tabler", "trivago"]
 }

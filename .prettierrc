@@ -2,6 +2,18 @@
   "trailingComma": "all",
   "tabWidth": 2,
   "semi": true,
+  "printWidth": 90,
   "singleQuote": true,
-  "jsxSingleQuote": true
+  "jsxSingleQuote": true,
+  "importOrder": [
+    "^next/(.*)$",
+    "react",
+    "^@mantine/(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^@/components/(.*)$",
+    "^@/utils/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

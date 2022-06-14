@@ -1,15 +1,16 @@
+import { Messages, Notification, Search, Settings } from 'tabler-icons-react';
+
 import {
-  Input,
-  Group,
-  Grid,
   ActionIcon,
   Avatar,
-  MediaQuery,
   Burger,
+  Grid,
+  Group,
+  Input,
+  MediaQuery,
   Text,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import { Notification, Messages, Settings, Search } from 'tabler-icons-react';
 
 import { useDashboardStore } from '@/utils/store/useDashboardStore';
 

@@ -1,5 +1,6 @@
-import { MediaQuery, Aside, Text } from '@mantine/core';
 import React from 'react';
+
+import { Aside, MediaQuery, Text } from '@mantine/core';
 
 const Sidebar = () => {
   return (
