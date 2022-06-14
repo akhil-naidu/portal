@@ -183,6 +183,14 @@ git subtree pull --prefix hasura portal-hasura master --squash
 
 ## Husky Configurations
 
+Making lint mandatory before doing any commit
+
 ```
 npx husky add .husky/pre-commit "yarn lint"
+```
+
+Before pushing the code, making sure I have a working production build
+
+```
+npx husky add .husky/pre-push "yarn build"
 ```
