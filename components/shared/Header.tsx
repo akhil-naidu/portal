@@ -18,12 +18,12 @@ const Header = ({ theme }: any) => {
   const toggleBurger = useDashboardStore((state) => state.toggleBurger);
 
   const showSearch = useMediaQuery('(min-width: 700px)', true);
-  const showHeaderActions = useMediaQuery('(min-width: 360px)', true);
+  const showHeaderActions = useMediaQuery('(min-width: 300px)', true);
 
   return (
     <Group grow spacing='xs'>
       {/* Burger and Logo */}
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <Group spacing='xs' noWrap>
         <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
           <Burger
             opened={isBurger}
@@ -36,15 +36,15 @@ const Header = ({ theme }: any) => {
         <Text size='xl' color='blue' weight={700}>
           Portal
         </Text>
-      </div>
+      </Group>
 
       {/* Search Bar */}
       {showSearch && <Input variant='filled' size='xs' icon={<Search />} />}
 
       {/* User Info Block*/}
-      <Group spacing='xs' position='right'>
+      <Group spacing='xs' position='right' noWrap>
         {showHeaderActions && (
-          <Group spacing='xs'>
+          <Group spacing='xs' noWrap>
             <ActionIcon onClick={() => console.log('clicked')}>
               <Settings size={20} strokeWidth={1} />
             </ActionIcon>
