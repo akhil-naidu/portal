@@ -180,3 +180,9 @@ cd hasura
 ```
 git subtree pull --prefix hasura portal-hasura master --squash
 ```
+
+## Husky Configurations
+
+```
+npx husky add .husky/pre-commit "yarn lint"
+```
