@@ -1,19 +1,7 @@
 import React from 'react';
-import {
-  GitPullRequest,
-  AlertCircle,
-  Messages,
-  Database,
-  Home,
-} from 'tabler-icons-react';
-import {
-  ThemeIcon,
-  UnstyledButton,
-  Group,
-  Text,
-  Box,
-  Center,
-} from '@mantine/core';
+import { AlertCircle, Database, GitPullRequest, Messages } from 'tabler-icons-react';
+
+import { Box, Center, Group, Text, ThemeIcon, UnstyledButton } from '@mantine/core';
 
 interface NavbarLinkProps {
   icon: React.ReactNode;
@@ -30,14 +18,11 @@ const NavbarLink = ({ icon, color, label }: NavbarLinkProps) => {
           width: '100%',
           padding: theme.spacing.xs,
           borderRadius: theme.radius.sm,
-          color:
-            theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
+          color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
 
           '&:hover': {
             backgroundColor:
-              theme.colorScheme === 'dark'
-                ? theme.colors.dark[6]
-                : theme.colors.gray[0],
+              theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
           },
         })}
       >
