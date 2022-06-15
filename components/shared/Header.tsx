@@ -1,9 +1,10 @@
 import {
   ArrowsLeftRight,
-  MessageCircle,
+  Dashboard,
+  ListNumbers,
   Messages,
+  NewSection,
   Notification,
-  Photo,
   Search,
   Settings,
 } from 'tabler-icons-react';
@@ -58,13 +59,13 @@ const Header = ({ theme }: any) => {
         {showHeaderActions && (
           <Group spacing='xs' noWrap>
             <ActionIcon onClick={() => console.log('clicked')}>
-              <Settings size={20} strokeWidth={1} />
+              <Settings size={20} strokeWidth={1.5} />
             </ActionIcon>
             <ActionIcon>
-              <Notification size={20} strokeWidth={1} />
+              <Messages size={20} strokeWidth={1.5} />
             </ActionIcon>
             <ActionIcon>
-              <Messages size={20} strokeWidth={1} />
+              <Notification size={20} strokeWidth={1.5} />
             </ActionIcon>
           </Group>
         )}
@@ -100,25 +101,42 @@ const Header = ({ theme }: any) => {
         >
           <Box>
             <Menu.Label>Application</Menu.Label>
-            <Menu.Item icon={<Settings size={14} />}>Dashboard</Menu.Item>
-            <Menu.Item icon={<MessageCircle size={14} />}>Create Post</Menu.Item>
-            <Menu.Item icon={<Photo size={14} />}>Reading List</Menu.Item>
+            <Menu.Item icon={<Dashboard size={16} strokeWidth={1.5} />}>
+              Dashboard
+            </Menu.Item>
+            <Menu.Item icon={<NewSection size={16} strokeWidth={1.5} />}>
+              Create Post
+            </Menu.Item>
+            <Menu.Item icon={<ListNumbers size={16} strokeWidth={1.5} />}>
+              Reading List
+            </Menu.Item>
 
             <Divider />
           </Box>
           {!showHeaderActions && (
             <Box>
               <Menu.Label>Hidden</Menu.Label>
-              <Menu.Item icon={<Settings size={14} />}>Settings</Menu.Item>
-              <Menu.Item icon={<MessageCircle size={14} />}>Messages</Menu.Item>
-              <Menu.Item icon={<Photo size={14} />}>Gallery</Menu.Item>
+              <Menu.Item icon={<Settings size={16} strokeWidth={1.5} />}>
+                Settings
+              </Menu.Item>
+              <Menu.Item icon={<Messages size={16} strokeWidth={1.5} />}>
+                Messages
+              </Menu.Item>
+              <Menu.Item icon={<Notification size={16} strokeWidth={1.5} />}>
+                Notification
+              </Menu.Item>
 
               <Divider />
             </Box>
           )}
 
           <Box>
-            <Menu.Item icon={<ArrowsLeftRight size={14} />}>Logout</Menu.Item>
+            <Menu.Item
+              icon={<ArrowsLeftRight size={16} strokeWidth={1.5} />}
+              color='blue'
+            >
+              Logout
+            </Menu.Item>
           </Box>
         </Menu>
       </Group>
