@@ -7,5 +7,12 @@
   },
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": true,
-  "cSpell.words": ["commitlint", "dropzone", "mantine", "tabler", "trivago", "Unstyled"]
+  "cSpell.words": [
+    "commitlint",
+    "dropzone",
+    "mantine",
+    "tabler",
+    "trivago",
+    "UnstyledButton"
+  ]
 }
