@@ -5,7 +5,9 @@ interface DashboardStore {
   toggleBurger: () => void;
 }
 
-export const useDashboardStore = create<DashboardStore>((set) => ({
+const useDashboardStore = create<DashboardStore>((set) => ({
   isBurger: false,
   toggleBurger: () => set((state) => ({ isBurger: !state.isBurger })),
 }));
+
+export default useDashboardStore;

@@ -1,13 +1,13 @@
 import { AppShell, Footer, Header, Navbar, useMantineTheme } from '@mantine/core';
 
+import { useDashboardStore } from '@/lib/store/';
+
 import {
   DashboardFooter,
   DashboardHeader,
   DashboardNavbar,
   DashboardSidebar,
 } from '@/components/shared';
-
-import { useDashboardStore } from '@/utils/store/useDashboardStore';
 
 interface DashboardProps {
   enableSidebar: boolean;

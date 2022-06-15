@@ -3,10 +3,12 @@ import {
   Dashboard,
   ListNumbers,
   Messages,
+  Moon,
   NewSection,
   Notification,
   Search,
   Settings,
+  Sun,
 } from 'tabler-icons-react';
 
 import {
@@ -24,11 +26,13 @@ import {
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
-import { useDashboardStore } from '@/utils/store/useDashboardStore';
+import { useDashboardStore, useGlobalStore } from '@/lib/store/';
 
 const Header = ({ theme }: any) => {
   const isBurger = useDashboardStore((state) => state.isBurger);
   const toggleBurger = useDashboardStore((state) => state.toggleBurger);
+  const isDarkMode = useGlobalStore((state) => state.isDarkMode);
+  const toggleTheme = useGlobalStore((state) => state.toggleTheme);
 
   const showSearch = useMediaQuery('(min-width: 700px)', true);
   const showHeaderActions = useMediaQuery('(min-width: 300px)', true);
@@ -131,6 +135,18 @@ const Header = ({ theme }: any) => {
           )}
 
           <Box>
+            <Menu.Item
+              icon={
+                isDarkMode ? (
+                  <Sun size={16} strokeWidth={1.5} />
+                ) : (
+                  <Moon size={16} strokeWidth={1.5} />
+                )
+              }
+              onClick={() => toggleTheme()}
+            >
+              {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+            </Menu.Item>
             <Menu.Item
               icon={<ArrowsLeftRight size={16} strokeWidth={1.5} />}
               color='blue'

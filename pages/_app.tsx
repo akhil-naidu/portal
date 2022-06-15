@@ -3,8 +3,13 @@ import Head from 'next/head';
 
 import { MantineProvider } from '@mantine/core';
 
+import { useGlobalStore } from '@/lib/store/';
+
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
+  const isDarkMode = useGlobalStore((state) => state.isDarkMode);
+
+  const currentTheme = isDarkMode ? 'dark' : 'light';
 
   return (
     <>
@@ -21,7 +26,7 @@ export default function App(props: AppProps) {
         withNormalizeCSS
         theme={{
           /** Put your mantine theme override here */
-          colorScheme: 'dark',
+          colorScheme: currentTheme,
         }}
       >
         <Component {...pageProps} />
