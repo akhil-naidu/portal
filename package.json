@@ -30,6 +30,7 @@
     "@mantine/prism": "^4.2.7",
     "@mantine/rte": "^4.2.7",
     "@mantine/spotlight": "^4.2.7",
+    "critters": "^0.0.16",
     "dayjs": "^1.11.2",
     "graphql": "^16.5.0",
     "graphql-tag": "^2.12.6",
