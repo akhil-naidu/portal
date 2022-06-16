@@ -1,0 +1,6 @@
+query FetchTest {
+  test {
+    id
+    name
+  }
+}
