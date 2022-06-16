@@ -1,18 +1,27 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
-import { MantineProvider } from '@mantine/core';
+import { useState } from 'react';
 
-import { useGlobalStore } from '@/lib/store/';
+import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+
+import '@/styles/globals.css';
+import { getCookie, setCookies } from 'cookies-next';
+import { GetServerSidePropsContext } from 'next';
 import { Provider } from 'urql';
 
 import { client } from '@/utils/graphql';
 
-const App = (props: AppProps) => {
+export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
-  const isDarkMode = useGlobalStore((state) => state.isDarkMode);
+  const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 
-  const currentTheme = isDarkMode ? 'dark' : 'light';
+  const toggleColorScheme = (value?: ColorScheme) => {
+    const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
+    setColorScheme(nextColorScheme);
+    setCookies('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
+  };
 
   return (
     <>
@@ -23,21 +32,23 @@ const App = (props: AppProps) => {
           content='minimum-scale=1, initial-scale=1, width=device-width'
         />
       </Head>
+
       <Provider value={client}>
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={{
-            /** Put your mantine theme override here */
-            colorScheme: currentTheme,
-            loader: 'dots',
-          }}
+        <ColorSchemeProvider
+          colorScheme={colorScheme}
+          toggleColorScheme={toggleColorScheme}
         >
-          <Component {...pageProps} />
-        </MantineProvider>
+          <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+            <NotificationsProvider>
+              <Component {...pageProps} />
+            </NotificationsProvider>
+          </MantineProvider>
+        </ColorSchemeProvider>
       </Provider>
     </>
   );
-};
+}
 
-export default App;
+App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
+  colorScheme: getCookie('mantine-color-scheme', ctx) || 'light',
+});

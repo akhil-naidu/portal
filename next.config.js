@@ -4,9 +4,9 @@ const nextConfig = {
   images: {
     domains: ['api.lorem.space'],
   },
-  experimental: {
-    optimizeCss: true,
-  },
+  // experimental: {
+  //   optimizeCss: true,
+  // },
 };
 
 module.exports = nextConfig;
