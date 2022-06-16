@@ -10,7 +10,7 @@ import {
 
 import { Box, ScrollArea, Text } from '@mantine/core';
 
-import { NavbarLink } from '@/components/shared';
+import { DashboardNavbarLink } from '@/components/shared';
 
 const navbarInfo = [
   {
@@ -56,40 +56,40 @@ const navbarInfo = [
 
 const Navbar = () => {
   return (
-    <ScrollArea style={{ height: 1000 }}>
-      <Box>
-        <NavbarLink
-          icon={<Home size={16} strokeWidth={1.5} />}
-          color={'green'}
-          label={'Home'}
-        />
-        <NavbarLink
-          icon={<Run size={16} strokeWidth={1.5} />}
-          color={'blue'}
-          label={'Getting started'}
-        />
-        <NavbarLink
-          icon={<ClipboardList size={16} strokeWidth={1.5} />}
-          color={'grape'}
-          label={'Notice Board'}
-        />
+    <Box component={ScrollArea} mx='-xs' px='xs'>
+      <DashboardNavbarLink
+        icon={<Home size={16} strokeWidth={1.5} />}
+        color={'green'}
+        label={'Home'}
+      />
 
-        <Box>
-          {navbarInfo.map((individualNavbarInfo) => {
-            return (
-              <div key={individualNavbarInfo.title}>
-                <Text size='md' weight={500} color={'dimmed'} pt='md'>
-                  {individualNavbarInfo.title}
-                </Text>
-                {individualNavbarInfo.data.map((link) => (
-                  <NavbarLink {...link} key={link.label} />
-                ))}
-              </div>
-            );
-          })}
-        </Box>
+      <DashboardNavbarLink
+        icon={<Run size={16} strokeWidth={1.5} />}
+        color={'blue'}
+        label={'Getting started'}
+      />
+
+      <DashboardNavbarLink
+        icon={<ClipboardList size={16} strokeWidth={1.5} />}
+        color={'grape'}
+        label={'Notice Board'}
+      />
+
+      <Box>
+        {navbarInfo.map((individualNavbarInfo) => {
+          return (
+            <Box key={individualNavbarInfo.title}>
+              <Text size='md' weight={500} color={'dimmed'} pt='md'>
+                {individualNavbarInfo.title}
+              </Text>
+              {individualNavbarInfo.data.map((link) => (
+                <DashboardNavbarLink {...link} key={link.label} />
+              ))}
+            </Box>
+          );
+        })}
       </Box>
-    </ScrollArea>
+    </Box>
   );
 };
 
