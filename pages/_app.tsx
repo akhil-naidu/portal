@@ -8,7 +8,7 @@ import { Provider } from 'urql';
 
 import { client } from '@/utils/graphql';
 
-export default function App(props: AppProps) {
+const App = (props: AppProps) => {
   const { Component, pageProps } = props;
   const isDarkMode = useGlobalStore((state) => state.isDarkMode);
 
@@ -38,4 +38,6 @@ export default function App(props: AppProps) {
       </Provider>
     </>
   );
-}
+};
+
+export default App;
