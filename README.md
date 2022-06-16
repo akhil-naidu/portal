@@ -200,3 +200,47 @@ Linting the commit message
 ```
 npx husky add .husky/commit-msg 'npx commitlint --edit $1'
 ```
+
+## GraphQL Codegen
+
+Install the VSCode extension `graphql`
+
+```
+yarn add @graphql-codegen/cli
+yarn graphql-codegen init
+yarn
+```
+
+Extra plugin for `urql` support
+
+```
+yarn add @graphql-codegen/typescript-urql
+```
+
+After installing add `typescript-urql` plugin to the list of other plugins in `codegen.yaml`
+
+```
+overwrite: true
+schema:
+  - http://localhost:8080/v1/graphql:
+      headers:
+        x-hasura-admin-secret: ravanasura
+        Content-Type: 'application/json'
+documents: 'graphql/**/*.graphql'
+generates:
+  generated/graphql.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'urql-introspection'
+      - 'typescript-urql'
+
+```
+
+### How to use codegen
+
+Open a new terminal
+
+```
+yarn generate --watch
+```

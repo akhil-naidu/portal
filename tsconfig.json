@@ -7,6 +7,7 @@
       "@/components/*": ["components/*"],
       "@/utils/*": ["utils/*"],
       "@/graphql/*": ["graphql/*"],
+      "@/generated/*": ["generated/*"],
       "@/lib/*": ["lib/*"]
     },
     "allowJs": true,
