@@ -41,8 +41,6 @@ const Header = ({ theme }: any) => {
 
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
-  console.log(colorScheme);
-
   return (
     <Group grow spacing='xs'>
       {/* Burger and Logo */}

@@ -33,6 +33,7 @@ services:
       HASURA_GRAPHQL_ADMIN_SECRET: ravanasura
       ## This key has to be in the .env file, for key contact Akhil
       HASURA_GRAPHQL_PRO_KEY: ${HASURA_GRAPHQL_PRO_KEY}
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: public
 
 volumes:
   db_data:
