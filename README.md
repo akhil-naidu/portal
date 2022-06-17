@@ -5,26 +5,35 @@
 3. Zustand as State Management Tool
 4. Mantine UI for Frontend UI
 5. Hasura GraphQL as the Backend
+6. Doppler for team-based ENV Management
 
-# Gitpod Setup
+## Doppler for sharing ENV variables (Mandatory to run the development instance)
+
+1. Use this official [documentation](https://docs.doppler.com/docs/install-cli) to install the doppler cli
+2. Once the installation was done, contact `Akhil`` to add you as a doppler team member
+3. Login to doppler using `login doppler`
+4. Navigate to `root` folder and use `doppler setup` and chose `portal` as project and then use `dev` as config
+5. Navigate to `root/hasura` folder and use `doppler setup` and chose `hasura-portal` and then choose `dev` as config
+
+## Gitpod Setup
 
 1. Open your branch using `gitpod` => https://gitpod.io/#{your-branch-url-with-out-curly-braces} or click this [link](https://gitpod.io/#https://github.com/akhil-naidu/portal) to open gitpod on the master branch
 2. Now open `gitpod` using desktop vscode from the settings tab or via the helper command
 3. Within your desktop vscode expose the following ports, `3000`, `8080`, `9693`, `9695`
 4. now run turn on your hasura console using the command `npx hasura console`
 
-# Yarn
+## Yarn
 
 1. Used yarn set version stable
 2. Extended `.gitignore` by adding `.yarn/cache` and `.yarn/install-state.gz`
 
-# Vercel
+## Vercel
 
 This project will be hosted on vercel, but the folder `hasura` has nothing to with the frontend. So, I created a `.vercelignore` file to not upload any content of it.
 
 Also, I would not like to trigger a vercel build, if only the files in `hasura` folder were updated. For that reason, I added a special check in vercel project settings to ignore build based on `hasura` folder. Using the command `bash ignore-build.sh`
 
-# Hasura
+## Hasura
 
 > Anything related to Hasura should be done in the `hasura` folder.
 
@@ -38,62 +47,35 @@ Apart from this, there is a folder named `hasura` which allows us to work with G
 
 ## Installing Hasura CLI (Not Mandatory)
 
-This project comes with a `hasura-cli` as a dev dependency, i.e., to use `hasura-cli` you can always use `npx hasura` within the `hasura` folder.
-
-If you are interested in installing `hasura-cli` globally, follow the below instructions.
-
-```
-curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
-```
-
-After installing the Hasura CLI, use the following [documentation](https://hasura.io/docs/latest/graphql/core/hasura-cli/hasura_completion/) to set up the auto-completion.
-
 ## Using Hasura CLI
 
 Before using the Hasura CLI, you need to first turn on the local Hasura instance.
 
-### Turning on the Hasura instance
+### Turning On and Off, the Hasura instance
 
-Anything related to Hasura should be done in the `hasura` folder.
-
-```
-cd hasura
-```
-
-In your root directory, use the below command to start the Hasura instance
+To start Hasura
 
 ```
-docker compose up -d
+yarn hasura-start
 ```
 
-Similarly to turn off the Hasura instance
+To stop hasura
 
 ```
-docker compose down
+yarn hasura-stop
 ```
 
 This will trigger a Hasura instance on port 8080, but I made sure the console is disabled by default for a better team-based development experience.
 
 ### Accessing the Hasura Console on the web
 
-As mentioned above, turning on the Hasura instance using the command `docker compose up -d` in the `hasura` directory will start the Hasura instance on port 8080, but will not allow you to access the console from the browser.
-
-For you to access the console on the web and simultaneously track the state of the Hasura instance within our `hasura` folder.
-
-> This way whatever changes you have done can be uploaded to git and can be replicated with other developers.
-
-Use the following command in the `hasura` folder to spin up a Hasura console that can be accessed via the web and simultaneously track the `metadata`(changes made in Hasura Console UI) and `migrations`(Changes made in our Database)
-
 ```
-cd hasura
-npx hasura console
+yarn hasura-console
 ```
 
 > The command should take care of the applying database migrations and apply metadata changes.
 
 ## Manually migrating and Applying metadata changes
-
-As mentioned multiple times, to use the `hasura-cli` you should be in the `hasura` folder.
 
 ```
 cd hasura
