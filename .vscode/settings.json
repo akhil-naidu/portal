@@ -13,6 +13,7 @@
     "commitlint",
     "dropzone",
     "mantine",
+    "Supabase",
     "tabler",
     "trivago",
     "UnstyledButton"
