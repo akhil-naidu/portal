@@ -32,6 +32,8 @@ import { useDashboardStore } from '@/lib/store/';
 
 import { customButtonStyles } from '@/components/shared';
 
+import { logout } from '@/utils/authFunctions';
+
 const Header = ({ theme }: any) => {
   const isBurger = useDashboardStore((state) => state.isBurger);
   const toggleBurger = useDashboardStore((state) => state.toggleBurger);
@@ -148,6 +150,7 @@ const Header = ({ theme }: any) => {
             </Menu.Item>
             <Menu.Item
               icon={<ArrowsLeftRight size={16} strokeWidth={1.5} color='orange' />}
+              onClick={() => logout()}
             >
               Logout
             </Menu.Item>

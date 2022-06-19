@@ -1,3 +1,3 @@
 # Utils
 
-Contains utility functions and stores.
+Contains utility functions.
