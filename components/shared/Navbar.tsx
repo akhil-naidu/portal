@@ -45,12 +45,15 @@ const useStyles = createStyles((theme) => ({
   },
 
   mainLink: {
-    width: 44,
-    height: 44,
+    width: 32,
+    height: 32,
+    marginInline: 12,
+    marginBlock: 2,
     borderRadius: theme.radius.md,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    alignContent: 'center',
     color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
 
     '&:hover': {
@@ -72,11 +75,11 @@ const useStyles = createStyles((theme) => ({
   title: {
     boxSizing: 'border-box',
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    marginBottom: theme.spacing.xl,
+    marginBottom: theme.spacing.sm,
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
     padding: theme.spacing.md,
-    paddingTop: 18,
-    height: 60,
+    paddingTop: 12,
+    height: 48,
     borderBottom: `1px solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[3]
     }`,
@@ -92,9 +95,8 @@ const useStyles = createStyles((theme) => ({
     padding: `0 ${theme.spacing.md}px`,
     fontSize: theme.fontSizes.sm,
     marginRight: theme.spacing.md,
-    fontWeight: 500,
-    height: 44,
-    lineHeight: '44px',
+    height: 36,
+    lineHeight: '36px',
 
     '&:hover': {
       backgroundColor:
@@ -140,8 +142,8 @@ const linksData = [
 
 const DoubleNavbar = () => {
   const { classes, cx } = useStyles();
-  const [active, setActive] = useState('Releases');
-  const [activeLink, setActiveLink] = useState('Settings');
+  const [active, setActive] = useState('Home');
+  const [activeLink, setActiveLink] = useState('Dashboard');
 
   const mainLinks = mainLinksData.map((link) => (
     <Tooltip
@@ -157,7 +159,7 @@ const DoubleNavbar = () => {
           [classes.mainLinkActive]: link.label === active,
         })}
       >
-        <link.icon />
+        <link.icon size={20} strokeWidth={1.5} />
       </UnstyledButton>
     </Tooltip>
   ));
@@ -181,7 +183,7 @@ const DoubleNavbar = () => {
       <Navbar.Section grow className={classes.wrapper}>
         <ScrollArea className={classes.aside}>{mainLinks}</ScrollArea>
         <Box className={classes.main}>
-          <Title order={4} className={classes.title}>
+          <Title order={5} className={classes.title}>
             {active}
           </Title>
           <ScrollArea>{links}</ScrollArea>
