@@ -159,7 +159,7 @@ const DoubleNavbar = () => {
           [classes.mainLinkActive]: link.label === active,
         })}
       >
-        <link.icon size={18} strokeWidth={1.5} />
+        <link.icon size={20} strokeWidth={1.5} />
       </UnstyledButton>
     </Tooltip>
   ));
