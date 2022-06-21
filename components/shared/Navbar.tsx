@@ -1,145 +1,194 @@
+import Link from 'next/link';
+
+import { useState } from 'react';
 import {
-  AlertCircle,
-  ClipboardList,
-  Database,
-  GitPullRequest,
-  Home,
-  Messages,
-  Run,
+  CalendarStats,
+  DeviceDesktopAnalytics,
+  Fingerprint,
+  Gauge,
+  Home2,
+  Settings,
+  User,
 } from 'tabler-icons-react';
 
-import { Box, ScrollArea, Text } from '@mantine/core';
+import {
+  Box,
+  Navbar,
+  ScrollArea,
+  Title,
+  Tooltip,
+  UnstyledButton,
+  createStyles,
+} from '@mantine/core';
 
-import { DashboardNavbarLink } from '@/components/shared';
+const useStyles = createStyles((theme) => ({
+  wrapper: {
+    display: 'flex',
+  },
 
-const navbarInfo = [
-  {
-    title: 'Getting Started',
-    data: [
-      {
-        icon: <Messages size={16} />,
-        color: 'violet',
-        label: 'Discussions',
-        navigateTo: '/',
-      },
-      {
-        icon: <Database size={16} />,
-        color: 'grape',
-        label: 'Databases',
-        navigateTo: '/',
-      },
-    ],
+  aside: {
+    flex: '0 0 60px',
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    borderRight: `1px solid ${
+      theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[3]
+    }`,
+    paddingTop: '8px',
   },
-  {
-    title: 'Advanced',
-    data: [
-      {
-        icon: <GitPullRequest size={16} />,
-        color: 'blue',
-        label: 'Pull Requests',
-        navigateTo: '/',
-      },
-      {
-        icon: <AlertCircle size={16} />,
-        color: 'teal',
-        label: 'Open Issues',
-        navigateTo: '/',
-      },
-    ],
+
+  main: {
+    flex: 1,
+    backgroundColor:
+      theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
   },
-  {
-    title: 'Introductions',
-    data: [
-      {
-        icon: <Messages size={16} />,
-        color: 'violet',
-        label: 'Discussions',
-        navigateTo: '/',
-      },
-      {
-        icon: <Database size={16} />,
-        color: 'grape',
-        label: 'Databases',
-        navigateTo: '/',
-      },
-    ],
+
+  mainLink: {
+    width: 44,
+    height: 44,
+    borderRadius: theme.radius.md,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+
+    '&:hover': {
+      backgroundColor:
+        theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[0],
+    },
   },
-  {
-    title: 'Notification',
-    data: [
-      {
-        icon: <Messages size={16} />,
-        color: 'violet',
-        label: 'Discussions',
-        navigateTo: '/',
-      },
-      {
-        icon: <Database size={16} />,
-        color: 'grape',
-        label: 'Databases',
-        navigateTo: '/',
-      },
-    ],
+
+  mainLinkActive: {
+    '&, &:hover': {
+      backgroundColor:
+        theme.colorScheme === 'dark'
+          ? theme.fn.rgba(theme.colors[theme.primaryColor][9], 0.25)
+          : theme.colors[theme.primaryColor][0],
+      color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 4 : 7],
+    },
   },
-  {
-    title: 'More Info',
-    data: [
-      {
-        icon: <Messages size={16} />,
-        color: 'violet',
-        label: 'Discussions',
-        navigateTo: '/',
-      },
-      {
-        icon: <Database size={16} />,
-        color: 'grape',
-        label: 'Databases',
-        navigateTo: '/',
-      },
-    ],
+
+  title: {
+    boxSizing: 'border-box',
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    marginBottom: theme.spacing.xl,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    padding: theme.spacing.md,
+    paddingTop: 18,
+    height: 60,
+    borderBottom: `1px solid ${
+      theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[3]
+    }`,
   },
+
+  link: {
+    boxSizing: 'border-box',
+    display: 'block',
+    textDecoration: 'none',
+    borderTopRightRadius: theme.radius.md,
+    borderBottomRightRadius: theme.radius.md,
+    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    padding: `0 ${theme.spacing.md}px`,
+    fontSize: theme.fontSizes.sm,
+    marginRight: theme.spacing.md,
+    fontWeight: 500,
+    height: 44,
+    lineHeight: '44px',
+
+    '&:hover': {
+      backgroundColor:
+        theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
+      color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    },
+  },
+
+  linkActive: {
+    '&, &:hover': {
+      borderLeftColor:
+        theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 7 : 5],
+      backgroundColor:
+        theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 7 : 5],
+      color: theme.white,
+    },
+  },
+}));
+
+const mainLinksData = [
+  { icon: Home2, label: 'Home' },
+  { icon: Gauge, label: 'Dashboard' },
+  { icon: DeviceDesktopAnalytics, label: 'Analytics' },
+  { icon: CalendarStats, label: 'Releases' },
+  { icon: User, label: 'Account' },
+  { icon: Fingerprint, label: 'Security' },
+  { icon: Settings, label: 'Settings' },
 ];
 
-const Navbar = () => {
-  return (
-    <Box component={ScrollArea} mx='-xs' px='xs'>
-      <DashboardNavbarLink
-        icon={<Home size={16} strokeWidth={1.5} />}
-        color={'green'}
-        label={'Home'}
-        navigateTo={'/'}
-      />
+const linksData = [
+  'Security',
+  'Settings',
+  'Dashboard',
+  'Releases',
+  'Account',
+  'Orders',
+  'Clients',
+  'Databases',
+  'Pull Requests',
+  'Open Issues',
+  'Wiki pages',
+];
 
-      <DashboardNavbarLink
-        icon={<Run size={16} strokeWidth={1.5} />}
-        color={'blue'}
-        label={'Getting started'}
-        navigateTo={'/'}
-      />
+const DoubleNavbar = () => {
+  const { classes, cx } = useStyles();
+  const [active, setActive] = useState('Releases');
+  const [activeLink, setActiveLink] = useState('Settings');
 
-      <DashboardNavbarLink
-        icon={<ClipboardList size={16} strokeWidth={1.5} />}
-        color={'grape'}
-        label={'Notice Board'}
-        navigateTo={'/'}
-      />
-
-      <Box>
-        {navbarInfo.map((individualNavbarInfo) => {
-          return (
-            <Box key={individualNavbarInfo.title}>
-              <Text size='md' weight={500} color={'dimmed'} pt='md'>
-                {individualNavbarInfo.title}
-              </Text>
-              {individualNavbarInfo.data.map((link) => (
-                <DashboardNavbarLink {...link} key={link.label} />
-              ))}
-            </Box>
-          );
+  const mainLinks = mainLinksData.map((link) => (
+    <Tooltip
+      label={link.label}
+      position='right'
+      withArrow
+      transitionDuration={0}
+      key={link.label}
+    >
+      <UnstyledButton
+        onClick={() => setActive(link.label)}
+        className={cx(classes.mainLink, {
+          [classes.mainLinkActive]: link.label === active,
         })}
-      </Box>
-    </Box>
+      >
+        <link.icon />
+      </UnstyledButton>
+    </Tooltip>
+  ));
+
+  const links = linksData.map((link) => (
+    <Link href='/' key={link} passHref>
+      <a
+        className={cx(classes.link, { [classes.linkActive]: activeLink === link })}
+        onClick={(event) => {
+          event.preventDefault();
+          setActiveLink(link);
+        }}
+      >
+        {link}
+      </a>
+    </Link>
+  ));
+
+  return (
+    <Navbar width={{ sm: 300 }}>
+      <Navbar.Section grow className={classes.wrapper}>
+        <ScrollArea className={classes.aside}>{mainLinks}</ScrollArea>
+        <Box className={classes.main}>
+          <Title order={4} className={classes.title}>
+            {active}
+          </Title>
+          <ScrollArea>{links}</ScrollArea>
+        </Box>
+      </Navbar.Section>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default DoubleNavbar;
