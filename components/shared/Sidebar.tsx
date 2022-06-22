@@ -8,6 +8,7 @@ import {
   ScrollArea,
   Stack,
   Text,
+  Title,
   UnstyledButton,
 } from '@mantine/core';
 
@@ -67,9 +68,9 @@ const Sidebar = () => {
       <Aside hiddenBreakpoint='md' width={{ sm: 200, lg: 300 }}>
         <Stack>
           <Box>
-            <Text size='md' weight={500} color={'dimmed'} pt='md' px='xs'>
+            <Title order={5} pt='md' px='xs'>
               {SidebarData[0].title}
-            </Text>
+            </Title>
             <Paper
               component={ScrollArea}
               m='xs'
