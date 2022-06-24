@@ -92,12 +92,12 @@ const Header = ({ theme }: any) => {
         <Menu
           trigger='click'
           control={
-            <UnstyledButton sx={(theme) => customButtonStyles(theme)}>
+            <UnstyledButton sx={(theme) => customButtonStyles(theme, { padding: 0 })}>
               <Avatar
                 src='https://api.lorem.space/image/face?hash=33791'
                 alt='Profile Picture of the User'
                 radius='xl'
-                size='sm'
+                size='md'
               />
             </UnstyledButton>
           }
