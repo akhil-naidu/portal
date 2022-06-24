@@ -65,7 +65,7 @@ const SidebarData = [
 const Sidebar = () => {
   return (
     <MediaQuery smallerThan='md' styles={{ display: 'none' }}>
-      <Aside hiddenBreakpoint='md' width={{ sm: 200, lg: 300 }}>
+      <Aside hiddenBreakpoint='lg' width={{ sm: 200, lg: 300 }}>
         <Stack>
           <Box>
             <Title order={5} pt='md' px='xs'>

@@ -35,13 +35,12 @@ const useStyles = createStyles((theme) => ({
     borderRight: `1px solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[3]
     }`,
-    paddingTop: '8px',
+    paddingTop: '4px',
   },
 
   main: {
     flex: 1,
-    backgroundColor:
-      theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
   },
 
   mainLink: {
@@ -179,7 +178,7 @@ const DoubleNavbar = () => {
   ));
 
   return (
-    <Navbar width={{ sm: 300 }}>
+    <Navbar style={{ maxWidth: 300, width: 'inherit' }}>
       <Navbar.Section grow className={classes.wrapper}>
         <ScrollArea className={classes.aside}>{mainLinks}</ScrollArea>
         <Box className={classes.main}>

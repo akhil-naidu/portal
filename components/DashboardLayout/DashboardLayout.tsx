@@ -39,7 +39,7 @@ const DashboardLayout = ({ enableSidebar, children }: DashboardProps) => {
           <DashboardNavbar />
         </Navbar>
       }
-      aside={enableSidebar ? <DashboardSidebar /> : <></>}
+      aside={<>{enableSidebar && <DashboardSidebar />}</>}
       footer={
         <Footer height={60} p='md'>
           <DashboardFooter />
