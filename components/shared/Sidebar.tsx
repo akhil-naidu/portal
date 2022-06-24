@@ -3,7 +3,6 @@ import {
   Avatar,
   Box,
   Group,
-  MediaQuery,
   Paper,
   ScrollArea,
   Stack,
@@ -64,48 +63,48 @@ const SidebarData = [
 
 const Sidebar = () => {
   return (
-    <MediaQuery smallerThan='md' styles={{ display: 'none' }}>
-      <Aside hiddenBreakpoint='md' width={{ sm: 200, lg: 300 }}>
-        <Stack>
-          <Box>
-            <Title order={5} pt='md' px='xs'>
-              {SidebarData[0].title}
-            </Title>
-            <Paper
-              component={ScrollArea}
-              m='xs'
-              p='xs'
-              radius='md'
-              shadow='xs'
-              sx={{ height: 250 }}
-              withBorder
-            >
-              {SidebarData[0].data.map((data, index) => {
-                return (
-                  <UnstyledButton
-                    key={index}
-                    sx={(theme) =>
-                      customButtonStyles(theme, {
-                        padding: '0px',
-                        paddingTop: '8px',
-                        paddingBottom: '8px',
-                        borderRadius: '8px',
-                      })
-                    }
-                  >
-                    <Group noWrap>
-                      <Avatar alt={data.text} radius='xl' src={data.image} />
+    // <MediaQuery smallerThan='md' styles={{ display: 'none' }}>
+    <Aside hiddenBreakpoint='md' width={{ md: 300 }} hidden={true}>
+      <Stack>
+        <Box>
+          <Title order={5} pt='md' px='xs'>
+            {SidebarData[0].title}
+          </Title>
+          <Paper
+            component={ScrollArea}
+            m='xs'
+            p='xs'
+            radius='md'
+            shadow='xs'
+            sx={{ height: 250 }}
+            withBorder
+          >
+            {SidebarData[0].data.map((data, index) => {
+              return (
+                <UnstyledButton
+                  key={index}
+                  sx={(theme) =>
+                    customButtonStyles(theme, {
+                      padding: '0px',
+                      paddingTop: '8px',
+                      paddingBottom: '8px',
+                      borderRadius: '8px',
+                    })
+                  }
+                >
+                  <Group noWrap>
+                    <Avatar alt={data.text} radius='xl' src={data.image} />
 
-                      <Text size='sm'>{data.text}</Text>
-                    </Group>
-                  </UnstyledButton>
-                );
-              })}
-            </Paper>
-          </Box>
-        </Stack>
-      </Aside>
-    </MediaQuery>
+                    <Text size='sm'>{data.text}</Text>
+                  </Group>
+                </UnstyledButton>
+              );
+            })}
+          </Paper>
+        </Box>
+      </Stack>
+    </Aside>
+    // </MediaQuery>
   );
 };
 
