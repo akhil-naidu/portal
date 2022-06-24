@@ -1,41 +1,60 @@
-import { useState } from 'react';
-import { Messages } from 'tabler-icons-react';
+import Link from 'next/link';
+
+import { Bookmark, Heart, Share } from 'tabler-icons-react';
 
 import {
+  ActionIcon,
   Avatar,
   Badge,
-  Button,
   Card,
   Group,
   Image,
-  Input,
-  Stack,
   Text,
   Title,
-  UnstyledButton,
   createStyles,
   useMantineTheme,
 } from '@mantine/core';
 
-import customButtonStyles from './customButtonStyles';
+const useStyles = createStyles((theme, _params, getRef) => {
+  const image = getRef('image');
+  return {
+    card: {
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+      cursor: 'pointer',
 
-const useStyles = createStyles((theme) => ({
-  card: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-  },
+      [`&:hover .${image}`]: {
+        transform: 'scale(1.03)',
+      },
+    },
 
-  image: {
-    width: '100%',
-    overflow: 'hidden',
-  },
+    image: {
+      ref: image,
 
-  body: {
-    paddingInline: theme.spacing.xl,
-    paddingTop: theme.spacing.xl,
-  },
-}));
+      width: '100%',
+      overflow: 'hidden',
+
+      // position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      // backgroundSize: 'cover',
+      transition: 'transform 500ms ease',
+
+      [`&:hover `]: {
+        transform: 'scale(1.03)',
+      },
+    },
+
+    body: {
+      paddingInline: theme.spacing.xl,
+      paddingTop: theme.spacing.xl,
+    },
+  };
+});
 
 interface PostData {
+  url: string;
   image: string;
   category: { name: string; color: string }[];
   title: string;
@@ -49,12 +68,12 @@ interface PostData {
 
 const Feed = () => {
   const theme = useMantineTheme();
-  const [openCommentSection, setOpenCommentSection] = useState(false);
 
   const secondaryColor =
     theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
 
   const data: PostData = {
+    url: '/',
     image:
       'https://www.sentinelassam.com/wp-content/uploads/2019/01/22027956-1538912168011.jpeg',
     category: [
@@ -86,117 +105,65 @@ const Feed = () => {
   );
 
   return (
-    <div style={{ maxWidth: '700px', margin: 'auto' }}>
-      <Card withBorder radius='md' className={classes.card}>
-        <Card.Section>
-          <Image
-            src={data.image}
-            height={300}
-            className={classes.image}
-            alt={data.title}
-          />
-        </Card.Section>
-        <div className={classes.body}>
-          <Group position='apart'>
+    <Link href={data.url}>
+      <div style={{ maxWidth: '700px', margin: 'auto' }}>
+        <Card withBorder radius='md' className={classes.card}>
+          <Card.Section>
+            <Image
+              src={data.image}
+              height={300}
+              className={classes.image}
+              alt={data.title}
+            />
+          </Card.Section>
+          <div className={classes.body}>
             <Tags />
-            <div>
-              <Group spacing='xs' noWrap>
+
+            <Title order={2} my='xs'>
+              {data.title}
+            </Title>
+            <Text size='md' style={{ color: secondaryColor, lineHeight: 1.5 }}>
+              {data.excerpt}
+            </Text>
+          </div>
+          <div style={{ paddingInline: '24px', paddingTop: '8px' }}>
+            <Group position='apart'>
+              <Group>
                 <Avatar radius='xl' size='sm' src={data.author.avatar} />
                 <Text size='sm' color='dimmed'>
                   {data.author.name}
                 </Text>
+                <Text size='xs' color='dimmed'>
+                  •
+                </Text>
 
+                <Text size='sm' color='dimmed'>
+                  {data.date}
+                </Text>
                 <Text size='xs' color='dimmed'>
                   •
                 </Text>
                 <Text size='sm' color='dimmed'>
-                  {data.date}
+                  1min read
                 </Text>
               </Group>
-            </div>
-          </Group>
-          <Title order={2} my='xs'>
-            {data.title}
-          </Title>
-          <Text size='md' style={{ color: secondaryColor, lineHeight: 1.5 }}>
-            {data.excerpt}
-          </Text>
-        </div>
-        <div style={{ paddingInline: '16px', paddingTop: '8px' }}>
-          <Group position='apart'>
-            <Group noWrap>
-              <UnstyledButton
-                sx={(theme) => customButtonStyles(theme, { padding: '8px' })}
-              >
-                <Group>
-                  <Messages size={16} />
 
-                  <Text size='sm'>likes</Text>
-                </Group>
-              </UnstyledButton>
-              <UnstyledButton
-                sx={(theme) => customButtonStyles(theme, { padding: '8px' })}
-                onClick={() => {
-                  setOpenCommentSection((prev) => !prev);
-                }}
-              >
-                <Group noWrap>
-                  <Messages size={16} />
-
-                  <Text size='sm'>comment</Text>
-                </Group>
-              </UnstyledButton>
-              <UnstyledButton
-                sx={(theme) => customButtonStyles(theme, { padding: '8px' })}
-              >
-                <Group noWrap>
-                  <Messages size={16} />
-
-                  <Text size='sm'>share</Text>
-                </Group>
-              </UnstyledButton>
-            </Group>
-
-            <Group position='right'>
-              <Text size='sm' color='dimmed'>
-                1min read
-              </Text>
-              <Button color='gray' variant='outline'>
-                Save
-              </Button>
-            </Group>
-          </Group>
-        </div>
-
-        {openCommentSection ? (
-          <div>
-            <Input size='xs' p={20} />
-            <Group noWrap>
-              <Avatar radius='xl' src={data.author.avatar} size={20} ml={4} />
-              <Stack spacing={0} justify='flex-end' pb={12}>
-                <Text size='sm'>Blake Boston</Text>
-                <Text size='xs'>
-                  some message he types some message he types some message he types some
-                  message he types
-                </Text>
-              </Stack>
-            </Group>
-            <Group ml={20} noWrap>
-              <Avatar radius='xl' src={data.author.avatar} size={20} ml={4} />
-              <Stack spacing={0} justify='flex-end' pb={2}>
-                <Text size='sm'>Blake Boston</Text>
-                <Text size='xs'>
-                  some message he types some message he types some message he types some
-                  message he types
-                </Text>
-              </Stack>
+              <Group position='right'>
+                <ActionIcon>
+                  <Heart size={18} color={theme.colors.red[6]} />
+                </ActionIcon>
+                <ActionIcon>
+                  <Bookmark size={18} color={theme.colors.yellow[6]} />
+                </ActionIcon>
+                <ActionIcon>
+                  <Share size={16} color={theme.colors.blue[6]} />
+                </ActionIcon>
+              </Group>
             </Group>
           </div>
-        ) : (
-          <></>
-        )}
-      </Card>
-    </div>
+        </Card>
+      </div>
+    </Link>
   );
 };
 export default Feed;
