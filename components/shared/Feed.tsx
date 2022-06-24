@@ -1,9 +1,9 @@
-import { Post } from '@/components/shared/';
+import { IndividualPostCard } from '@/components/shared/';
 
 interface FeedData {
   id: number;
   url: string;
-  image: string;
+  image?: string;
   category: { name: string; color: string }[];
   title: string;
   excerpt: string;
@@ -29,7 +29,7 @@ const Feed = () => {
       excerpt: `Indian Institute of Technology Guwahati, the sixth member of the IIT fraternity, was established in 1994. The academic programme of IIT Guwahati commenced in 1995`,
       date: 'Feb 6th',
       author: {
-        name: 'Elsa Brown',
+        name: 'Kaparapu Akhil Naidu',
         avatar:
           'https://images.unsplash.com/photo-1628890923662-2cb23c2e0cfe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80',
       },
@@ -37,8 +37,8 @@ const Feed = () => {
     {
       id: 2,
       url: '/',
-      image:
-        'https://www.sentinelassam.com/wp-content/uploads/2019/01/22027956-1538912168011.jpeg',
+      // image:
+      //   'https://www.sentinelassam.com/wp-content/uploads/2019/01/22027956-1538912168011.jpeg',
       category: [
         { name: 'Alcheringa', color: 'blue' },
         { name: 'Entire Campus', color: 'green' },
@@ -60,7 +60,7 @@ const Feed = () => {
   return (
     <>
       {data.map((post) => (
-        <Post key={post.id} post={post} />
+        <IndividualPostCard key={post.id} post={post} />
       ))}
     </>
   );

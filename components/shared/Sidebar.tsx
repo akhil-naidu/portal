@@ -73,7 +73,7 @@ const Sidebar = () => {
           <Paper
             component={ScrollArea}
             m='xs'
-            p='xs'
+            // p='xs'
             radius='md'
             shadow='xs'
             sx={{ height: 250 }}
@@ -92,7 +92,7 @@ const Sidebar = () => {
                     })
                   }
                 >
-                  <Group noWrap>
+                  <Group noWrap px='xs'>
                     <Avatar alt={data.text} radius='xl' src={data.image} />
 
                     <Text size='sm'>{data.text}</Text>

@@ -46,7 +46,7 @@ const DashboardLayout = ({ enableSidebar, children }: DashboardProps) => {
         </Footer>
       }
       header={
-        <Header height={70} p='md'>
+        <Header height={62} p='sm'>
           <DashboardHeader theme={theme} />
         </Header>
       }
